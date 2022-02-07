@@ -1,6 +1,6 @@
 import * as React from 'react';
-
-// import {Autocomplete, TextField} from "@mui/material";
+import {Autocomplete, TextField} from "@mui/material";
+import CopyField from "../CopyField";
 
 interface HeroProps {
 
@@ -9,18 +9,18 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({}) => {
 
   const options = [
-    {label: 'The Godfather', id: 1},
-    {label: 'Pulp Fiction', id: 2},
+    {label: 'React JS', id: 1},
   ];
   return (
     <>
-      {/*<Autocomplete*/}
-      {/*  disablePortal*/}
-      {/*  id="combo-box-demo"*/}
-      {/*  options={options}*/}
-      {/*  sx={{width: 300}}*/}
-      {/*  renderInput={(params) => <TextField {...params} label="Movie"/>}*/}
-      {/*/>*/}
+      <CopyField/>
+      <Autocomplete
+        disablePortal
+        id="mvp-library"
+        options={options}
+        sx={{width: 300}}
+        renderInput={(params) => <TextField {...params} label="MVP Library"/>}
+      />
     </>
   )
 };
