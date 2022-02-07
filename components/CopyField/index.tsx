@@ -1,64 +1,39 @@
 import * as React from 'react';
-import styled from "styled-components";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import {CopyFieldWrapper} from './styled';
+import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
 
 interface CopyFieldProps {
-
+  copyString: string;
 }
 
-const CopyFieldWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  border: 2px solid #30363d;
-  border-radius: 6px;
-  width: fit-content;
-  margin: 4rem auto;
-  padding-right: 1rem;
-  font-size: 1em;
-  transition: all 0.2s linear;
+const CopyField: React.FC<CopyFieldProps> = ({copyString}) => {
 
-  &:hover {
-    border: 2px solid #66BB6A;
+  const [tooltipTitle, setTooltipTitle] = React.useState<string>("Copy Command to Clipboard");
+  const [copied, setCopied] = React.useState<boolean>(false);
 
-    button.copy-button {
-      svg {
-        color: #66BB6A;
-      }
+  const onClickHandler = (e?: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    if (e?.target) {
+      const element = e.target as HTMLInputElement;
+      element.select();
     }
-  }
-
-  span.copy-field {
-    padding: 1rem 2rem;
-    background-color: transparent;
-  }
-
-  button.copy-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-
-    svg {
-      transition: all 0.2s ease-in-out;
-    }
-
-
-    &:hover {
-      svg {
-        color: rgb(102, 187, 106);
-      }
-    }
-  }
-`;
-
-const CopyField: React.FC<CopyFieldProps> = ({}) => {
-
-  const [copyString, setCopyString] = React.useState('copy this');
+    navigator.clipboard.writeText(copyString).then((r) => {
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+      }, 1500);
+    });
+  };
 
   return (
-    <CopyFieldWrapper>
-      <span role="button" className="copy-field">{copyString}</span>
-      <button className="copy-button">
-        <ContentCopyIcon titleAccess={"Copy Command to Clipboard"} color={"action"}/>
+    <CopyFieldWrapper title={tooltipTitle} className={copied ? "copied" : ""}>
+      <input readOnly onClick={(e) => onClickHandler(e)} onChange={(r) => r}
+             role="button" className="copy-field"
+             value={copyString}/>
+      <button onClick={() => onClickHandler()} className="copy-button">
+        {!copied ? <ContentCopyIcon titleAccess={tooltipTitle} color="action"/> :
+          <DoneOutlineIcon titleAccess={tooltipTitle} color="action"/>}
+
       </button>
     </CopyFieldWrapper>
   )

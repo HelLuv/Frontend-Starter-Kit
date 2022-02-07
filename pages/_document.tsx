@@ -15,7 +15,10 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8"/>
           <meta name="description" content="Frontend Starter Kit"/>
           <link
-            href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&family=Nunito:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"/>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
             rel="stylesheet"/>
           {/*// @ts-ignore*/}
           {this.props.emotionStyleTags}

@@ -8,12 +8,14 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({}) => {
 
+  const [copyString, setCopyString] = React.useState('yarn create react-app my-app');
+
   const options = [
     {label: 'React JS', id: 1},
   ];
   return (
     <>
-      <CopyField/>
+      <CopyField copyString={copyString}/>
       <Autocomplete
         disablePortal
         id="mvp-library"
