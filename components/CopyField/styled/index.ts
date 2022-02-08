@@ -2,14 +2,13 @@ import styled from "styled-components";
 
 const CopyFieldWrapper = styled.div`
   display: flex;
-  justify-content: center;
   border: 2px solid #30363d;
   border-radius: 6px;
-  width: fit-content;
-  margin: 4rem auto;
+  margin: 4rem 0;
   font-size: 1em;
   transition: all 0.2s linear;
   position: relative;
+  width: 100%;
 
   &:hover {
     border: 2px solid #90caf9;

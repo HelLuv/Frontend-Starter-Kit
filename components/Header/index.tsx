@@ -4,11 +4,11 @@ interface HeaderProps {
 
 }
 
-const Header:React.FC<HeaderProps> = ({})=>{
+const Header: React.FC<HeaderProps> = ({}) => {
 
-    return (
-        <h1>Header</h1>
-    )
+  return (
+    <h1>Frontend Starter Kit</h1>
+  )
 };
 
 export default React.memo<HeaderProps>(Header);
